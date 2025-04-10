@@ -20,9 +20,9 @@ Item {
 
         onClicked: {
             // Obtener coordenadas del centro del mapa
-            var mapPoint = mapCanvas.mapSettings.viewportCenter
+            var mapPoint = iface.mapCanvas().mapSettings.viewportCenter
             // Transformar al CRS deseado
-            var transformedPoint = mapCanvas.mapSettings.coordinateTransform(mapPoint, "EPSG:4326")
+            var transformedPoint = iface.mapCanvas().mapSettings.coordinateTransform(mapPoint, "EPSG:4326")
 
             // Mostrar diálogo
             coordinateDialog.xCoord = transformedPoint.x.toFixed(6)
@@ -34,7 +34,7 @@ Item {
     // Diálogo personalizado
     Dialog {
         id: coordinateDialog
-        parent: mainWindow.contentItem
+        parent: iface.mainWindow().contentItem
         width: 300
         height: 200
         modal: true
@@ -78,11 +78,11 @@ Item {
 
     // Conexión con la API de QField
     Connections {
-        target: mainWindow
+        target: iface.mainWindow()
 
         // Opcional: Actualizar coordenadas al mover el mapa
         onMapPositionChanged: {
-            var transformedPoint = mapCanvas.mapSettings.coordinateTransform(position, "EPSG:4326")
+            var transformedPoint = iface.mapCanvas().mapSettings.coordinateTransform(position, "EPSG:4326")
             coordinateDialog.xCoord = transformedPoint.x.toFixed(6)
             coordinateDialog.yCoord = transformedPoint.y.toFixed(6)
         }
