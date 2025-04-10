@@ -18,7 +18,7 @@ Item {
 
   QfToolButton {
     id: pluginButton
-    iconSource: 'icon.svg'
+    iconSource: 'icon2.svg'
     iconColor: Theme.mainColor
     bgcolor: Theme.darkGray
     round: true
