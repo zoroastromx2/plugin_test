@@ -32,7 +32,7 @@ Item {
       }
     }
   }
-}
+
 
 
 Item {
@@ -118,4 +118,5 @@ Item {
             coordinateDialog.yCoord = transformedPoint.y.toFixed(6)
         }
     }
+}
 }
