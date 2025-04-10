@@ -33,33 +33,22 @@ Item {
     }
   }
 
-  Item {
-    id: plugin_2
+  QfToolButton {
+    id: pluginButton_2
+    iconSource: 'icon.svg'
+    iconColor: Theme.mainColor
+    bgcolor: Theme.darkGray
+    round: true
 
-    property var mainWindow: iface.mainWindow()
-    property var positionSource: iface.findItemByObjectName('positionSource')
-
-    Component.onCompleted: {
-      iface.addItemToPluginsToolbar(pluginButton)
-    }
-
-    QfToolButton {
-      id: pluginButton_2
-      iconSource: 'icon.svg'
-      iconColor: Theme.mainColor
-      bgcolor: Theme.darkGray
-      round: true
-
-      onClicked: {
-        let position = positionSource.positionInformation
-        if (positionSource.active && position.latitudeValid && position.longitudeValid) {
-          mainWindow.displayToast(qsTr('Tu posición actual es : ' + position.latitude + ', ' +position.longitude))
-        } else {
-          mainWindow.displayToast(qsTr('Tu posición actual es desconocida'))
-        }
+    onClicked: {
+      let position = positionSource.positionInformation
+      if (positionSource.active && position.latitudeValid && position.longitudeValid) {
+        mainWindow.displayToast(qsTr('Tu posición actual es : ' + position.latitude + ', ' +position.longitude))
+      } else {
+        mainWindow.displayToast(qsTr('Tu posición actual es desconocida'))
       }
     }
-}
+  }
 
 
 Item {
