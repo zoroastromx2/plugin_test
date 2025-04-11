@@ -25,21 +25,21 @@ Item {
 
     onClicked: {
 
-      var mapPoint = iface.mapCanvas().mapSettings.viewportCenter
-      var transformedPoint = iface.mapCanvas().mapSettings.coordinateTransform(mapPoint, "EPSG:4326")
-
-      // Mostrar diálogo
-      coordinateDialog.xCoord = transformedPoint.x.toFixed(6)
-      coordinateDialog.yCoord = transformedPoint.y.toFixed(6)
-      coordinateDialog.open()
-
-
       let position = positionSource.positionInformation
       if (positionSource.active && position.latitudeValid && position.longitudeValid) {
         mainWindow.displayToast(qsTr('Tu posición actual es : ' + position.latitude + ', ' +position.longitude))
       } else {
         mainWindow.displayToast(qsTr('Tu posición actual es desconocida'))
       }
+
+      var mapPoint = iface.mapCanvas().mapSettings.viewportCenter
+     // var transformedPoint = iface.mapCanvas().mapSettings.coordinateTransform(mapPoint, "EPSG:4326")
+
+      // Mostrar diálogo
+      coordinateDialog.xCoord = position.longitude
+      coordinateDialog.yCoord = position.latitude
+      coordinateDialog.open()
+
     }
   }
 
