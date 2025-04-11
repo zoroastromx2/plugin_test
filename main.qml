@@ -25,8 +25,8 @@ Item {
 
     onClicked: {
 
-      iface.mapCanvas().setCanvasColor(Qt.black)
-      iface.mapCanvas().refresh()
+     // iface.mapCanvas().setCanvasColor(Qt.black)
+      //iface.mapCanvas().refresh()
 
       let position = positionSource.positionInformation
       if (positionSource.active && position.latitudeValid && position.longitudeValid) {
