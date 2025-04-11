@@ -52,8 +52,10 @@ Item {
         // Opcional: Actualizar coordenadas al mover el mapa
         onMapPositionChanged: {
             //var transformedPoint = iface.mapCanvas().mapSettings.coordinateTransform(position, "EPSG:4326")
-            coordinateDialog.xCoord = position.longitude
-            coordinateDialog.yCoord = position.latitude
+
+          let position = positionSource.positionInformation
+          coordinateDialog.xCoord = position.longitude
+          coordinateDialog.yCoord = position.latitude
         }
     }
   }
