@@ -1,7 +1,7 @@
 [general]
-name=Plugin Template botón 0.7.2
-description=QField plugin botón 0.7.2
+name=Plugin Template botón 0.7.3
+description=QField plugin botón 0.7.3
 author=alfredo.inegi.org.mx
-icon=icon.svg
-version=0.7.2
+icon=chat_contact.svg
+version=0.7.3
 homepage=https://www.inegi.org.mx

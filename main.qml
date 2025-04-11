@@ -68,6 +68,10 @@ Item {
       modal: true
       title: "Coordenadas Actuales"
 
+      z: 10000
+      x: (parent.width - width) / 2
+      y: (parent.height - height) / 2
+
       property real xCoord: 0.0
       property real yCoord: 0.0
 
