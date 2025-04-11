@@ -24,6 +24,16 @@ Item {
     round: true
 
     onClicked: {
+
+      var mapPoint = iface.mapCanvas().mapSettings.viewportCenter
+      var transformedPoint = iface.mapCanvas().mapSettings.coordinateTransform(mapPoint, "EPSG:4326")
+
+      // Mostrar diálogo
+      coordinateDialog.xCoord = transformedPoint.x.toFixed(6)
+      coordinateDialog.yCoord = transformedPoint.y.toFixed(6)
+      coordinateDialog.open()
+
+
       let position = positionSource.positionInformation
       if (positionSource.active && position.latitudeValid && position.longitudeValid) {
         mainWindow.displayToast(qsTr('Tu posición actual es : ' + position.latitude + ', ' +position.longitude))
@@ -32,6 +42,51 @@ Item {
       }
     }
   }
+
+  Dialog {
+      id: coordinateDialog
+      parent: iface.mainWindow().contentItem
+      width: 300
+      height: 200
+      modal: true
+      title: "Coordenadas Actuales"
+
+      property real xCoord: 0.0
+      property real yCoord: 0.0
+
+      ColumnLayout {
+          anchors.fill: parent
+          spacing: 10
+
+          Label {
+              text: "Sistema de Referencia:"
+              font.bold: true
+          }
+
+          Label {
+              text: "EPSG:4326 (WGS 84)"
+              Layout.fillWidth: true
+          }
+
+          GridLayout {
+              columns: 2
+              Layout.fillWidth: true
+
+              Label { text: "Longitud (X):" }
+              Label { text: coordinateDialog.xCoord }
+
+              Label { text: "Latitud (Y):" }
+              Label { text: coordinateDialog.yCoord }
+          }
+
+          Button {
+              text: "Cerrar"
+              Layout.alignment: Qt.AlignHCenter
+              onClicked: coordinateDialog.close()
+          }
+      }
+  }
+
 
 
 /*Item {
